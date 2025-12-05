@@ -94,6 +94,27 @@
       text-align: center;
     }
 
+        /* Filters styling */
+    #filters {
+      margin: 20px 0;
+      padding: 10px;
+      background: #f1f1f1;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    #filters label {
+      margin: 0 10px;
+      font-weight: 600;
+    }
+
+    #filters select,
+    #filters input {
+      margin-left: 5px;
+      padding: 5px;
+    }
+
+
     /* Selection area (before generating) */
     #groups {
       display: grid;
@@ -186,14 +207,13 @@
 </head>
 <body>
 <header>
+
   <h1>
 
     MEXICANOS AL MUNDIAL 2026 <br>
     Group & Match Generator
 
 </header>
-
-
   <div class="container">
     <section id="groups">
       <h2>🏆 Assign Teams to Groups (A–L)</h2>
@@ -201,6 +221,35 @@
     <button onclick="showSelections()">Confirm Groups</button>
     <button onclick="generateMatches()">Generate Matches</button>
     <div id="output"></div>
+     <!-- ✅ Filters section goes here -->
+    <section id="filters">
+      <h2>Filter Fixtures</h2>
+      <label>
+        Group:
+<select id="filterGroup">
+  <option value="">All</option>
+  <option value="A">Group A</option>
+  <option value="B">Group B</option>
+  <option value="C">Group C</option>
+  <option value="D">Group D</option>
+  <option value="E">Group E</option>
+  <option value="F">Group F</option>
+  <option value="G">Group G</option>
+  <option value="H">Group H</option>
+  <option value="I">Group I</option>
+  <option value="J">Group J</option>
+  <option value="K">Group K</option>
+  <option value="L">Group L</option>
+</select>
+        </select>
+      </label>
+
+      <label>
+        Team:
+        <input type="text" id="filterTeam" placeholder="Enter team name">
+      </label>
+    </section>
+
     <div id="matches"></div>
   </div>
 
@@ -373,7 +422,6 @@ function showSelections() {
   // Close groups container
   output.innerHTML += "</div>";
 }
-
 // Generate matches based on official schedule AND selected teams
 function generateMatches() {
   const matchesDiv = document.getElementById("matches");
@@ -390,60 +438,79 @@ function generateMatches() {
     groupTeamsMap[String.fromCharCode(65 + i)] = teams;
   }
 
+  // Precompute fixtures in correct round order for each group
+  const groupFixtures = {};
+  Object.keys(groupTeamsMap).forEach(group => {
+    const t = groupTeamsMap[group];
+    groupFixtures[group] = [
+      `${t[0]} vs ${t[1]}`, // Match 1
+      `${t[2]} vs ${t[3]}`, // Match 2
+      `${t[0]} vs ${t[2]}`, // Match 3
+      `${t[1]} vs ${t[3]}`, // Match 4
+      `${t[0]} vs ${t[3]}`, // Match 5
+      `${t[1]} vs ${t[2]}`  // Match 6
+    ];
+  });
 
-// Precompute fixtures in correct round order for each group
-const groupFixtures = {};
-Object.keys(groupTeamsMap).forEach(group => {
-  const t = groupTeamsMap[group];
-  groupFixtures[group] = [
-    // Round 1
-    `${t[0]} vs ${t[1]}`, // Match 1
-    `${t[2]} vs ${t[3]}`, // Match 2
-    // Round 2
-    `${t[0]} vs ${t[2]}`, // Match 3
-    `${t[1]} vs ${t[3]}`, // Match 4
-    // Round 3
-    `${t[0]} vs ${t[3]}`, // Match 5
-    `${t[1]} vs ${t[2]}`  // Match 6
-  ];
-});
+  // Fixture order mapping per group (match slot -> pairing index)
+  const fixtureOrder = {
+    A: {1:0, 2:1, 25:3, 28:2, 53:4, 54:5},
+    B: {3:0, 8:1, 26:3, 27:2, 51:1, 52:5},
+    C: {5:1, 7:0, 29:2, 30:3, 49:4, 50:5},
+    D: {4:0, 6:1, 31:3, 32:2, 59:4, 60:5},
+    E: {9:1, 10:0, 33:3, 34:2, 55:5, 56:4},
+    F: {11:0, 12:1, 35:3, 36:2, 57:4, 58:5},
+    G: {15:0, 16:1, 39:2, 40:3, 63:4, 64:5},
+    H: {13:0, 14:1, 37:2, 38:3, 65:4, 66:5},
+    I: {17:0, 18:1, 41:2, 42:3, 61:4, 62:5},
+    J: {19:0, 20:1, 43:2, 44:3, 69:4, 70:5},
+    K: {23:0, 24:1, 47:2, 48:3, 71:4, 72:5},
+    L: {21:1, 22:0, 45:2, 46:3, 67:4, 68:5}
+  };
 
-// Fixture order mapping per group (match slot -> pairing index)
-const fixtureOrder = {
-  A: {1:0, 2:1, 25:3, 28:2, 53:4, 54:5},
-  B: {3:0, 8:1, 26:3, 27:2, 51:1, 52:5},
-  C: {5:1, 7:0, 29:2, 30:3, 49:4, 50:5},
-  D: {4:0, 6:1, 31:3, 32:2, 59:4, 60:5},
-  E: {9:1, 10:0, 33:3, 34:2, 55:5, 56:4},
-  F: {11:0, 12:1, 35:3, 36:2, 57:4, 58:5},
-  G: {15:0, 16:1, 39:2, 40:3, 63:4, 64:5},
-  H: {13:0, 14:1, 37:2, 38:3, 65:4, 66:5},
-  I: {17:0, 18:1, 41:2, 42:3, 61:4, 62:5},
-  J: {19:0, 20:1, 43:2, 44:3, 69:4, 70:5},
-  K: {23:0, 24:1, 47:2, 48:3, 71:4, 72:5},
-  L: {21:1, 22:0, 45:2, 46:3, 67:4, 68:5}
-};
+  // 🔽 Read filter values
+  const filterGroup = document.getElementById("filterGroup").value;
+  const filterTeam = document.getElementById("filterTeam").value.toLowerCase();
 
-  // Render schedule with teams inserted
-schedule.forEach(m => {
-  const fixtures = groupFixtures[m.group];
-  let teamInfo = "";
-  if (fixtures && fixtureOrder[m.group] && fixtureOrder[m.group][m.num] !== undefined) {
-    const index = fixtureOrder[m.group][m.num];
-    teamInfo = fixtures[index];
-  }
-  matchesDiv.innerHTML += `<div class="match">
-    Match ${m.num} – Group ${m.group} – ${m.date} – ${m.stadium}
-    ${m.notes ? " ("+m.notes+")" : ""} 
-    ${teamInfo ? " – " + teamInfo : ""}
-  </div>`;
-});
+  // Render schedule with filters applied
+  schedule.forEach(m => {
+    // Skip if group filter is set and doesn’t match
+    if (filterGroup && m.group !== filterGroup) return;
+
+    const fixtures = groupFixtures[m.group];
+    let teamInfo = "";
+    if (fixtures && fixtureOrder[m.group] && fixtureOrder[m.group][m.num] !== undefined) {
+      const index = fixtureOrder[m.group][m.num];
+      teamInfo = fixtures[index];
+    }
+
+    // Skip if team filter is set and neither team matches
+    if (filterTeam && teamInfo) {
+      const [team1, , team2] = teamInfo.split(" ");
+      if (
+        !team1.toLowerCase().includes(filterTeam) &&
+        !team2.toLowerCase().includes(filterTeam)
+      ) {
+        return;
+      }
+    }
+
+    matchesDiv.innerHTML += `<div class="match">
+      Match ${m.num} – Group ${m.group} – ${m.date} – ${m.stadium}
+      ${m.notes ? " ("+m.notes+")" : ""} 
+      ${teamInfo ? " – " + teamInfo : ""}
+    </div>`;
+  });
 }
 
+// Initialize
+createGroupSelectors();
 
+// ✅ Auto-update when filters change
+document.getElementById("filterGroup").addEventListener("change", generateMatches);
+document.getElementById("filterTeam").addEventListener("input", generateMatches);
 // Initialize
 createGroupSelectors();
   </script>
 </body>
-
 </html>
