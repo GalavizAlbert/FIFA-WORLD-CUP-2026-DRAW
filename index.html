@@ -29,6 +29,23 @@ body {
       margin: 20px auto;
       max-width: 600px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+    .ticket-sectionMEX {
+      background: rgba(215, 247, 206, 0.9);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+        .ticket-sectionMEXST {
+      background: rgba(53, 162, 23, 0.9);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .match-title {
       font-size: 1.3em;
@@ -74,8 +91,8 @@ body {
 <h1 style="text-align:center; font-size:3em; background:rgb(5, 171, 68); color:white; display:inline-block; padding:20px 40px; border-radius:10px;">
     🎟️ FIFA WORLD CUP 2026 – TICKET SALES
 </h1>
-<div class="ticket-section">
-<div class="ticket-section">
+
+<div class="ticket-sectionMEX">
   <!-- M1 already fixed with logos -->
   <div class="match-title" style="color: green; display:flex; align-items:center; gap:15px; font-weight:bold;">
     <img src="mexico-logo.png" alt="Mexico Logo" style="height:40px; width:auto;">
@@ -83,10 +100,25 @@ body {
     <img src="southafrica-logo.png" alt="South Africa Logo" style="height:40px; width:auto;">
   </div>
 
- <div class="venue-info">
-  <strong>M1</strong> 📍 Venue: Estadio Banorte, Mexico City
-  <span style="color:rgb(6, 97, 150); font-weight:normal;">🗓️ June 11, 2026⏰13:00</span>
+<div class="venue-info">
+  <span style="
+    display:inline-block;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    font-size:20px;   /* Bigger text */
+    padding:6px 12px; /* More space around */
+    border-radius:4px;">
+    M1
+  </span>
+  📍 Venue: Estadio Banorte, Mexico City  
+  <div style="color:rgb(6, 97, 150); font-weight:normal;">
+    🗓️ June 11, 2026 ⏰ 13:00
+  </div>
 </div>
+
+
+
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th></tr>
     <tr><td>Cat 1</td><td class="none">$5,900 USD</td></tr>
@@ -95,16 +127,26 @@ body {
   <a href="https://wa.me/14084122142" class="buy-btn" target="_blank">Buy Tickets</a>
 </div>
 
-<div class="ticket-section">
+<div class="ticket-sectionMEX">
   <div class="match-title" style="color: green; display:flex; align-items:center; gap:15px; font-weight:bold;">
     <img src="mexico-logo.png" alt="Mexico Logo" style="height:40px; width:auto;">
     <span>MEXICO vs SOUTH KOREA</span>
     <img src="southkorea-logo.png" alt="South Korea Logo" style="height:40px; width:auto;">
   </div>
 
- <div class="venue-info">
-  <strong>M28</strong> 📍 Venue: Estadio Akron, Guadalajara
-  <span style="color:rgb(6, 97, 150); font-weight:normal;">🗓️ June 18, 2026⏰19:00</span>
+<div class="venue-info">
+  <span style="
+    display:inline-block;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    font-size:20px;     /* Bigger text */
+    padding:6px 12px;   /* Space around text */
+    border-radius:4px;">M28</span>
+  📍 Venue: Estadio Akron, Guadalajara  
+  <div style="color:rgb(6, 97, 150); font-weight:normal; margin-top:4px;">
+    🗓️ June 18, 2026 ⏰ 19:00
+  </div>
 </div>
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th></tr>
@@ -116,16 +158,28 @@ body {
   <a href="https://wa.me/14084122142" class="buy-btn" target="_blank">Buy Tickets</a>
 </div>
 
-<div class="ticket-section">
+<div class="ticket-sectionMEX">
   <div class="match-title" style="color: green; display:flex; align-items:center; gap:15px; font-weight:bold;">
     <img src="mexico-logo.png" alt="Mexico Logo" style="height:40px; width:auto;">
     <span>MEXICO vs UEFA PO-D</span>
     <img src="uefa-playoff-logo.png" alt="UEFA Playoff Logo" style="height:40px; width:auto;">
   </div>
 
-  <div class="venue-info">
-  <strong>M53</strong> 📍 Venue: Estadio Banorte, Mexico City
-  <span style="color:rgb(6, 97, 150); font-weight:normal;">🗓️ June 24, 2026⏰19:00</span>
+<div class="venue-info">
+  <span style="
+    display:inline-block;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    font-size:22px;     /* Bigger text */
+    padding:6px 12px;   /* Space around text */
+    border-radius:4px;">
+    M53
+  </span>
+  📍 Venue: Estadio Banorte, Mexico City  
+  <div style="color:rgb(6, 97, 150); font-weight:normal; margin-top:4px;">
+    🗓️ June 24, 2026 ⏰ 19:00
+  </div>
 </div>
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th></tr>
@@ -136,15 +190,28 @@ body {
   </table>
   <a href="https://wa.me/525533325564" class="buy-btn" target="_blank">Buy Tickets</a>
 </div>
-</div>
+
 <!-- Knockout round (no logos yet) -->
 <div class="ticket-section">
   <div class="match-title" style="color: green; font-weight:bold; text-align:center;">
-  M79-ROUND OF 32 (1A vs 3CEFHI)
+ROUND OF 32 (1A vs 3CEFHI)
   </div>
-  <div class="venue-info">
-  <strong>M79</strong> 📍 Venue: Estadio Banorte, Mexico City
-  <span style="color:rgb(6, 97, 150); font-weight:normal;">🗓️ June 30, 2026⏰19:00</span>
+
+<div class="venue-info">
+  <span style="
+    display:inline-block;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    font-size:22px;     /* Bigger text */
+    padding:6px 12px;   /* Space around text */
+    border-radius:4px;">
+    M79
+  </span>
+  📍 Venue: Estadio Banorte, Mexico City  
+  <div style="color:rgb(6, 97, 150); font-weight:normal; margin-top:4px;">
+    🗓️ June 30, 2026 ⏰ 19:00
+  </div>
 </div>
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th></tr>
