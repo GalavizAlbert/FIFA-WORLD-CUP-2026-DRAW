@@ -96,6 +96,36 @@ body {
   font-weight: 700;
 }
 
+/* Modal background */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 999; 
+  padding-top: 60px; 
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Modal image */
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 20px; right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
 .flashing-header {
   font-size: 2.2em;
   font-weight: 800;
@@ -150,6 +180,24 @@ body {
   </h1>
 </div>
 
+<!-- your stadium markup here -->
+
+
+<script>
+function openMapModal(imageSrc) {
+  const modal = document.getElementById("mapModal");
+  const modalImg = document.getElementById("mapImage");
+  modal.style.display = "block";
+  modalImg.src = imageSrc; // load the correct stadium map
+}
+
+function closeMapModal() {
+  document.getElementById("mapModal").style.display = "none";
+}
+</script>
+</body> 
+</html>
+
 
 <div class="ticket-sectionMEX">
   <!-- M1 already fixed with logos -->
@@ -159,32 +207,45 @@ body {
     <img src="southafrica-logo.png" alt="South Africa Logo" style="height:40px; width:auto;">
   </div>
 
-<div class="venue-info">
-  <span style="
-    display:inline-block;
-    background-color:black;
-    color:white;
-    font-weight:bold;
-    font-size:20px;   /* Bigger text */
-    padding:6px 12px; /* More space around */
-    border-radius:4px;">
-    M1
-  </span>
-  📍 Venue: Estadio Banorte, Mexico City  
-  <div style="color:rgb(6, 97, 150); font-weight:normal;">
-    🗓️ June 11, 2026 ⏰ 13:00
+  <div class="venue-info">
+    <span style="
+      display:inline-block;
+      background-color:black;
+      color:white;
+      font-weight:bold;
+      font-size:20px;
+      padding:6px 12px;
+      border-radius:4px;">
+      M1
+    </span>
+    📍 Venue: Estadio Banorte, Mexico City
+    <div style="color:rgb(6, 97, 150); font-weight:normal;">
+      🗓️ June 11, 2026 ⏰ 13:00
+    </div>
   </div>
-</div>
 
-
+  <!-- Modal structure -->
+  <div id="mapModal" class="modal">
+    <span class="close" onclick="closeMapModal()">&times;</span>
+    <img class="modal-content" id="mapImage">
+  </div>
 
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th></tr>
     <tr><td>Cat 1</td><td class="none">$5,900 USD</td></tr>
     <tr><td>Cat 2</td><td>$5,000 USD</td></tr>
   </table>
-  <a href="https://wa.me/525533325564" class="buy-btn" target="_blank">Buy Tickets</a>
+
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
+    <a href="https://wa.me/525533325564" class="buy-btn" target="_blank">Buy Tickets</a>
+    
+    <!-- Stadium icon on the right, with dynamic map -->
+    <img src="stadium.png" alt="Stadium Map"
+         style="height:50px; cursor:pointer;"
+         onclick="openMapModal('banorte-map.jpg')">
+  </div>
 </div>
+
 
 <div class="ticket-sectionMEX">
   <div class="match-title" style="color: green; display:flex; align-items:center; gap:15px; font-weight:bold;">
@@ -207,16 +268,31 @@ body {
     🗓️ June 18, 2026 ⏰ 19:00
   </div>
 </div>
+
+ <!-- Modal structure -->
+<div id="mapModal" class="modal">
+  <span class="close" onclick="closeMapModal()">&times;</span>
+  <img class="modal-content" id="mapImage">
+</div>
+
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th><th></th></tr>
-    <tr><td>Cat 1</td><td><span class="old-price">$3,300 USD</span><span class="new-price">$3,000 USD</span></td>
-    <td><span class="discount-box">Special discount</span></td></tr>
+    <tr><td>Cat 1</td><td>$3,300 USD</td><td></td></tr>
     <tr><td>Cat 2</td><td>$2,700 USD</td><td></td></tr>
     <tr><td>Cat 3</td><td>$2,400 USD</td><td></td></tr>
     <tr><td>Cat 4</td><td>$2,200 USD</td><td></td></tr>
   </table>
-  <a href="https://wa.me/525533325564" class="buy-btn" target="_blank">Buy Tickets</a>
+   <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
+    <a href="https://wa.me/525533325564" class="buy-btn" target="_blank">Buy Tickets</a>
+    
+    <!-- Stadium icon on the right, with dynamic map -->
+    <img src="stadium.png" alt="Stadium Map"
+         style="height:50px; cursor:pointer;"
+         onclick="openMapModal('Akron-map.jpg')">
+  </div>
 </div>
+
+
 
 <div class="ticket-sectionMEX">
   <div class="match-title" style="color: green; display:flex; align-items:center; gap:15px; font-weight:bold;">
@@ -569,7 +645,6 @@ body {
          style="height:40px; width:auto; vertical-align:middle; margin-right:10px;">
     Sponsored by FuryTV
 </footer>
-
 
 
 
