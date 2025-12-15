@@ -96,6 +96,8 @@ body {
   font-weight: 700;
 }
 
+
+
 /* Modal background */
 .modal {
   display: none; 
@@ -127,7 +129,7 @@ body {
   cursor: pointer;
 }
 .flashing-header {
-  font-size: 2.2em;
+  font-size: 1.2em;
   font-weight: 800;
   background: #f1f3f2;
   color: #ff0000;
@@ -147,6 +149,17 @@ body {
 .discount-box {
   display: inline-block;
   background-color: #d60000; /* bright red */
+  color: #fff;              /* white text */
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 4px;       /* square with slight rounding */
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.payment-box {
+  display: inline-block;
+  background-color: #1231fe; /* bright red */
   color: #fff;              /* white text */
   font-weight: 600;
   padding: 6px 12px;
@@ -176,7 +189,9 @@ body {
 
 <div style="text-align:center;">
   <h1 class="flashing-header">
-    👹👺Felicidades Toluca 👹👺
+   🇲🇽 MEXICO vs SUDAFRICA 🇿🇦 <br>
+    🎉💳Pagos a 5 meses 💳🎉
+
   </h1>
 </div>
 
@@ -233,7 +248,8 @@ function closeMapModal() {
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th></tr>
     <tr><td>Cat 1</td><td class="none">$5,900 USD</td></tr>
-    <tr><td>Cat 2</td><td>$5,000 USD</td></tr>
+    <tr><td>Cat 1</td><td><span class="new-price">$5,000 USD</span></td>
+    <td><span class="payment-box">Payment Plan</span></td></tr>
   </table>
 
   <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
@@ -659,7 +675,7 @@ function closeMapModal() {
 </div>
   <table class="ticket-table">
     <tr><th>Category</th><th>Price (USD)</th></tr>
-    <tr><td>Cat 2</td><td>$1,750 USD</td></tr>
+    <tr><td>Cat 2</td><td><span style="color:red; font-weight:bold; text-transform:uppercase;">SOLD OUT</span></td></tr>
   </table>
    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
     <a href="https://wa.me/525533325564" class="buy-btn" target="_blank">Buy Tickets</a>
@@ -722,8 +738,6 @@ function closeMapModal() {
          style="height:40px; width:auto; vertical-align:middle; margin-right:10px;">
     Sponsored by FuryTV
 </footer>
-
-
 
 
 
