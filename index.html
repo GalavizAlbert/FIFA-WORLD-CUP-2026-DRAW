@@ -45,7 +45,8 @@
   </div>
 
   <div class="hero-cta">
-    <button class="btn-primary" onclick="openPaymentModal()">Ver plan de pagos</button>
+    <button class="btn-primary" onclick="openPaymentModal()">Ver plan de pago A</button>
+    <button class="btn-primary" onclick="openPaymentModal2()">Ver plan de pago B</button>
     <button class="btn-outline" onclick="openWhatsAppGenerico()">
       Mas información por WhatsApp
     </button>
@@ -58,13 +59,45 @@
   <div class="modal-contentplan">
     <span class="close" onclick="closePaymentModal()">&times;</span>
 
-    <h2>Plan de Pagos:</h2>
-    <p> </p>
+    <h2>Plan de Pago A:</h2>
+    <p> Pagos mensua  les</p>
 
 <ul>
-  <li>💳 <strong>Pago inicial del 25%</strong> para apartar tus boletos y asegurar tu lugar en el Mundial.</li>
+  <li>💳 <strong>Pago inicial del <span style="color:#51ff8e;">25%</span></strong> para apartar tus boletos y asegurar tu lugar en el Mundial.</li>
 
-  <li>📅 <strong>5 pagos mensuales del 15%</strong> cada uno, sin intereses y con recordatorios automáticos para tu tranquilidad.</li>
+  <li>📅 <strong>5 pagos mensuales del <span style="color:#51ff8e;">15%</span></strong> cada uno, sin intereses y con recordatorios automáticos para tu tranquilidad.</li>
+
+  <li>🧾 <strong>Comprobante digital</strong> después del pago inicial, con toda la información de tus boletos.</li>
+
+  <li>🎟️ <strong>Asignación de boletos garantizada</strong> una vez completado el plan, con opción de elegir categoría y zona.</li>
+
+<li>📅 Plan de Pago:<strong><br>
+    📅Inicio: <span style="color:#51ff8e;">25%</span><br>
+    📅Mes 1: <span style="color:#51ff8e;">15%</span><br>
+    📅Mes 2: <span style="color:#51ff8e;">15%</span><br>
+    📅Mes 3: <span style="color:#51ff8e;">15%</span><br>
+    📅Mes 4: <span style="color:#51ff8e;">15%</span><br>
+    📅Mes 5: <span style="color:#51ff8e;">15%</span><br>
+    Total: <span style="color:#51ff8e;">100%</span>
+
+<li>🏁 <strong> Transferencia de boleto al finalizar el plan y cubrir el monto total</strong>, sin cargos ocultos ni costos adicionales.</li>
+</li>
+  </div>
+</div>
+  </section>
+
+<!-- PAYMENT PLAN MODAL2 -->
+<div id="paymentModal2" class="modalplan">
+  <div class="modal-contentplan">
+    <span class="close" onclick="closePaymentModal()">&times;</span>
+
+    <h2>Plan de Pago B:</h2>
+    <p> Pago final en Junio 2025</p>
+
+<ul>
+  <li>💳 <strong>Pago inicial del <span style="color:#51ff8e;">30%</span></strong> para apartar tus boletos y asegurar tu lugar en el Mundial.</li>
+
+  <li>📅 <strong>Pago final del <span style="color:#51ff8e;">70%</span> el 1 de junio de 2025</strong>, sin intereses y con recordatorios automáticos para tu tranquilidad.</li>
 
   <li>🧾 <strong>Comprobante digital</strong> después del pago inicial, con toda la información de tus boletos.</li>
 
@@ -75,7 +108,6 @@
   </div>
 </div>
   </section>
-
 
   <style>
     :root {
@@ -588,6 +620,26 @@
       }
     });
 
+
+    function openPaymentModal2() {
+      document.getElementById("paymentModal2").style.display = "block";
+    }
+
+    function closePaymentModal() {
+      document.getElementById("paymentModal2").style.display = "none";
+    }
+
+    // Optional: close when clicking outside
+    window.addEventListener("click", function(event) {
+      const modal = document.getElementById("paymentModal2");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+
+
+
+
     function openWhatsAppGenerico() {
       const phone = "14084122142";
       const message = encodeURIComponent(
@@ -675,9 +727,9 @@ const message =
     }
 
     function openWhatsAppGenerico() {
-      const msg =
-        "Hola! Me gustaría recibir más información sobre la ropa disponible, tallas y opciones de envío. " +
-        "¿Podrías compartirme detalles y fotos de lo que tengas en stock?";
+const msg =
+  "Hola! Me gustaría recibir más información sobre los planes de pago y los boletos disponibles. " +
+  "¿Podrías compartirme categorías, precios, disponibilidad y opciones para apartar mis boletos?";
       const enc = encodeURIComponent(msg);
       window.open(`https://wa.me/${WHATSAPP_NUMERO_1}?text=${enc}`, "_blank");
     }
@@ -863,9 +915,14 @@ function applyFilters() {
   </div>
 
   <!-- Categories -->
-  <div class="ticket-row" style="display:flex; justify-content:space-between; margin-top:12px;">
+  <div class="ticket-row" style="display:flex; justify-content:space-between; margin-top:6px;">
     <span>Category 1</span>
-    <span class="soldout-box" style="color:rgb(253, 169, 169); font-weight:bold; text-transform:uppercase;">SOLD OUT</span>
+    <span style="margin-left:8px; font-size:0.8rem; color:#25d366;" onclick="openPaymentModal2()">
+  💳 Payment Plan
+</span>
+    <span style="font-weight:bold; color:rgb(56, 255, 86);">
+      $3,200 USD
+    </span>
   </div>
 
   <div class="ticket-row" style="display:flex; justify-content:space-between; margin-top:6px;">
